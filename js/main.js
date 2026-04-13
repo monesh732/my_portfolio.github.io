@@ -91,4 +91,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(s => navObserver.observe(s));
   }
+
+  /* --- Mouse Parallax (hero scene) --- */
+  const parallaxLayers = document.querySelectorAll('[data-parallax-depth]');
+  const canUseHeavyMotion =
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    !window.matchMedia('(pointer: coarse)').matches;
+
+  if (parallaxLayers.length > 0 && canUseHeavyMotion) {
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let parallaxRafId = null;
+
+    const animateParallax = () => {
+      // Lerp for smoother, less jittery motion
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      parallaxLayers.forEach((layer) => {
+        const depth = Number(layer.getAttribute('data-parallax-depth')) || 0.2;
+        layer.style.transform = `translate3d(${currentX * 18 * depth}px, ${currentY * 18 * depth}px, 0)`;
+      });
+
+      parallaxRafId = window.requestAnimationFrame(animateParallax);
+    };
+
+    window.addEventListener('mousemove', (event) => {
+      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    animateParallax();
+    window.addEventListener('beforeunload', () => {
+      if (parallaxRafId) window.cancelAnimationFrame(parallaxRafId);
+    });
+  }
+
+  /* --- Tilt Interactions for Cards --- */
+  const tiltTargets = document.querySelectorAll(
+    '.service-card, .project-card, .step, .blog-item, .contact-card, .hero-stat, .result-box'
+  );
+  if (canUseHeavyMotion) {
+    tiltTargets.forEach((card) => {
+      card.classList.add('tilt-card');
+      let tx = 0;
+      let ty = 0;
+      let cx = 0;
+      let cy = 0;
+      let rafId = null;
+      let active = false;
+
+      const animateTilt = () => {
+        if (!active) return;
+        cx += (tx - cx) * 0.16;
+        cy += (ty - cy) * 0.16;
+        card.style.transform = `perspective(1000px) rotateX(${-cy * 8}deg) rotateY(${cx * 10}deg) translateY(-6px)`;
+        rafId = window.requestAnimationFrame(animateTilt);
+      };
+
+      card.addEventListener('mouseenter', () => {
+        active = true;
+        if (!rafId) rafId = window.requestAnimationFrame(animateTilt);
+      });
+      card.addEventListener('mousemove', (event) => {
+        const rect = card.getBoundingClientRect();
+        tx = (event.clientX - rect.left) / rect.width - 0.5;
+        ty = (event.clientY - rect.top) / rect.height - 0.5;
+      });
+      card.addEventListener('mouseleave', () => {
+        active = false;
+        if (rafId) {
+          window.cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        tx = 0;
+        ty = 0;
+        cx = 0;
+        cy = 0;
+        card.style.transform = '';
+      });
+    });
+  }
 });

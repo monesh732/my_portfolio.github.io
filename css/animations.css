@@ -1,76 +1,81 @@
-/* ========================================
-   Scroll Reveal Animations
-   ======================================== */
-
-/* Initial state */
+/* ===== Cinematic Reveal ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  transform: translate3d(0, 40px, 0) scale(0.96) rotateX(7deg);
+  transform-origin: 50% 80%;
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out), filter 0.8s var(--ease-out);
+  filter: blur(8px);
 }
-
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+  filter: blur(0);
 }
 
-/* Stagger children */
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+  transform: translate3d(0, 28px, 0) scale(0.97) rotateX(6deg);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+  filter: blur(6px);
 }
-
-.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
-.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
-.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.19s; }
-.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.26s; }
-.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.33s; }
-.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
-
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.06s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.14s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.22s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.30s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.38s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.46s; }
 .reveal-stagger.visible > * {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+  filter: blur(0);
 }
 
-/* ========================================
-   Smooth link transitions
-   ======================================== */
-
-a {
-  transition: color var(--duration-fast) var(--ease-out);
+/* ===== Float Animations ===== */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(94, 230, 168, 0); }
+  50% { box-shadow: 0 0 34px rgba(94, 230, 168, 0.26); }
+}
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ========================================
-   Subtle card hover
-   ======================================== */
+.float-card.one { animation: floatY 5.2s ease-in-out infinite; }
+.float-card.two { animation: floatY 6.1s ease-in-out infinite reverse; }
+.float-card.three { animation: floatY 4.8s ease-in-out infinite; }
+.hero-cta,
+.cta-button { animation: pulseGlow 3.8s ease-in-out infinite; }
 
-.service-card,
-.project-card,
-.testimonial-card {
-  transition: border-color var(--duration-fast) var(--ease-out),
-              transform var(--duration-fast) var(--ease-out),
-              box-shadow var(--duration-fast) var(--ease-out);
+/* ===== Motion Utility ===== */
+.tilt-card {
+  transition: transform var(--duration-fast) var(--ease-out);
+  transform-style: preserve-3d;
 }
 
-/* ========================================
-   Reduced motion support
-   ======================================== */
-
+/* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-stagger > *,
   .service-card,
   .project-card,
-  .testimonial-card,
+  .step,
   .hero-cta,
-  .cta-button {
+  .cta-button,
+  .float-card {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  * {
+    filter: none !important;
     animation: none !important;
   }
+  * { animation: none !important; }
 }

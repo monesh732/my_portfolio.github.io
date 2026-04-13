@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
   <nav class="nav">
@@ -26,8 +27,12 @@
   </nav>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero reveal">
       <div class="container">
+        <span class="page-orb left" aria-hidden="true"></span>
+        <span class="page-orb right" aria-hidden="true"></span>
+        <span class="page-float-chip one" aria-hidden="true">Open to Work</span>
+        <span class="page-float-chip two" aria-hidden="true">Quick Replies</span>
         <span class="section-label">Contact</span>
         <h1 class="section-heading">Let’s Build Something Useful</h1>
         <p class="section-sub" style="margin: 0 auto;">Reach out by your preferred channel. I usually reply quickly with scope and next steps.</p>
@@ -35,7 +40,7 @@
     </section>
     <section class="section" style="padding-top: 0;">
       <div class="container">
-        <div class="contact-cards">
+        <div class="contact-cards reveal-stagger">
           <article class="contact-card">
             <h3>Email</h3>
             <p>Best for project details and requirements.</p>

@@ -3,6 +3,31 @@
 .project-hero {
   padding: 8rem 0 2.7rem;
   text-align: center;
+  position: relative;
+}
+.project-hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: 8%;
+  top: -120px;
+  border-radius: 50%;
+  background: rgba(111, 179, 255, 0.2);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.project-hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: 8%;
+  top: -140px;
+  border-radius: 50%;
+  background: rgba(94, 230, 168, 0.18);
+  filter: blur(55px);
+  pointer-events: none;
 }
 
 .back-link {
@@ -25,10 +50,11 @@
 
 .result-box {
   background: linear-gradient(145deg, rgba(19, 28, 43, 0.9), rgba(17, 24, 38, 0.92));
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   text-align: center;
   padding: 1.1rem;
+  box-shadow: var(--shadow-soft);
 }
 
 .result-box .number {
@@ -47,9 +73,9 @@
 .project-screenshot-container {
   margin: 2.2rem auto 2.4rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-depth);
 }
 
 .project-screenshot {
@@ -61,10 +87,12 @@
 .content-block {
   max-width: 780px;
   margin: 0 auto;
-  background: linear-gradient(145deg, rgba(21, 29, 44, 0.88), rgba(17, 24, 38, 0.86));
-  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(21, 29, 44, 0.78), rgba(17, 24, 38, 0.72));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
   border-radius: var(--radius-md);
   padding: clamp(1.2rem, 1rem + 1.2vw, 2rem);
+  box-shadow: var(--shadow-soft);
 }
 
 .content-block h2 {
@@ -98,9 +126,9 @@
 .code-block {
   margin: 1.3rem 0 0.8rem;
   padding: 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
-  background: #0d121d;
+  background: rgba(13, 18, 29, 0.95);
   overflow-x: auto;
 }
 
