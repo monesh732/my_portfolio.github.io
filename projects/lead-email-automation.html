@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Email Automation | Monesh Portfolio</title>
+  <meta name="description" content="Case study: A Python automation that reads leads from CSV, personalizes outreach emails, and sends them in batches with retry logic and tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../contact.html">Contact</a>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire Me on Fiverr</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main>
+    <article class="project-hero">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Portfolio
+        </a>
+        <span class="section-label">Case Study</span>
+        <h1 class="section-heading">Lead Outreach Email Automation</h1>
+        <p class="section-sub" style="margin: 0 auto;">From a simple CSV leads file to personalized, tracked email campaigns — fully automated with Python.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">500+</p><p class="label">Leads contacted per run</p></div>
+        <div class="result-box"><p class="number">42%</p><p class="label">Open rate</p></div>
+        <div class="result-box"><p class="number">0 hrs</p><p class="label">Manual effort after setup</p></div>
+      </div>
+
+      <!-- Project Screenshot -->
+      <div class="project-screenshot-container">
+        <img src="../email_automation.png" alt="Lead Outreach Email Automation — campaign workflow and tracking" class="project-screenshot">
+      </div>
+
+      <div class="content-block">
+        <h2>The Problem</h2>
+        <p>A sales team was manually copying leads from a spreadsheet, writing individual emails, and tracking responses in notes. It was exhausting, inconsistent, and they could only reach about 20 leads per day. They needed to scale to hundreds without hiring more staff or losing the personal touch.</p>
+
+        <h2>The Solution</h2>
+        <p>I built a Python automation pipeline that handles the entire outreach workflow from start to finish:</p>
+        <ul>
+          <li><strong>Reads leads from CSV</strong> — name, email, company, role, notes. No special database required to get started</li>
+          <li><strong>Personalizes each email</strong> — uses lead data to customize subject lines, greetings, references to their company, and tailored CTAs</li>
+          <li><strong>Sends in batches</strong> — configurable delays between emails to stay under provider rate limits and avoid spam flags</li>
+          <li><strong>Retry logic for failures</strong> — if SMTP drops a message, it retries up to 3 times before logging it as failed</li>
+          <li><strong>Open tracking</strong> — lightweight tracking pixel records when each lead opens the email</li>
+          <li><strong>Bounce handling</strong> — invalid emails are caught and logged so the lead list stays clean</li>
+          <li><strong>Summary report</strong> — generates a CSV with sent/failed/opened stats after each run</li>
+        </ul>
+
+        <h2>The Core Automation</h2>
+        <div class="code-block">
+          <pre><span class="keyword">def</span> send_campaign(
+    leads_file: Path,
+    template: str,
+    smtp_config: dict,
+    batch_size: int = 50
+) -> CampaignReport:
+
+    leads = read_leads(leads_file)
+    report = CampaignReport(total=len(leads))
+
+    <span class="keyword">for</span> i, lead <span class="keyword">in</span> enumerate(leads):
+        <span class="comment"># Personalize subject + body from lead data</span>
+        email = render_template(template, lead)
+
+        <span class="comment"># Respect rate limits — send in batches</span>
+        <span class="keyword">if</span> i > 0 <span class="keyword">and</span> i % batch_size == 0:
+            log.info("Batch complete. Pausing 5 min...")
+            time.sleep(300)
+
+        <span class="comment"># Send with retry on failure</span>
+        success = send_with_retry(
+            to=lead.email,
+            subject=email.subject,
+            body=email.body,
+            smtp=smtp_config
+        )
+        report.record(send=success, lead=lead)
+
+    report.export("campaign_report.csv")
+    <span class="keyword">return</span> report</pre>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Python 3.11</strong> — Automation engine</li>
+          <li><strong>smtplib / email</strong> — Python stdlib email sending</li>
+          <li><strong>Jinja2</strong> — Email template rendering with personalization</li>
+          <li><strong>Pandas</strong> — CSV reading and data validation</li>
+          <li><strong>Pillow</strong> — Tracking pixel generation</li>
+          <li><strong>Flask (optional)</strong> — Lightweight dashboard for viewing campaign stats</li>
+          <li><strong>Schedule / cron</strong> — Automated recurring campaigns</li>
+        </ul>
+
+        <h2>The Result</h2>
+        <p>What used to require days of manual copy-paste and email composition now runs as a single Python command. 500+ personalized, tracked emails go out in organized batches with zero manual intervention. The team gets a clear report showing exactly who received, opened, and bounced — making follow-ups targeted instead of guesswork.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">Check GitHub</a>
+          <a href="#" class="btn-secondary">Live Demo (Soon)</a>
+        </div>
+
+        <h2>Need Lead Outreach Automated?</h2>
+        <p>I can build a custom email automation system for your specific lead source, email templates, and sending preferences. Runs from a CSV, Google Sheets, or any data source you use. Let's discuss on Fiverr.</p>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin-top: 1rem;">
+          Hire Me on Fiverr
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer">Fiverr</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
