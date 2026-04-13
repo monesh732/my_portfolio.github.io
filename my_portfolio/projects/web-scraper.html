@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraper | Monesh Portfolio</title>
+  <meta name="description" content="Case study: A Python web scraper that extracts structured data from websites, handles anti-bot measures, and outputs clean CSV/JSON data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../contact.html">Contact</a>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire Me on Fiverr</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main>
+    <article class="project-hero">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Portfolio
+        </a>
+        <span class="section-label">Case Study</span>
+        <h1 class="section-heading">Web Scraper</h1>
+        <p class="section-sub" style="margin: 0 auto;">Automated data extraction from websites — turning unstructured pages into clean, structured datasets.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">10K+</p><p class="label">Records scraped per run</p></div>
+        <div class="result-box"><p class="number">99.1%</p><p class="label">Data accuracy</p></div>
+        <div class="result-box"><p class="number">5 min</p><p class="label">Runtime (vs hours manual)</p></div>
+      </div>
+
+      <!-- Project Screenshot -->
+      <div class="project-screenshot-container">
+        <img src="../web_scraping.png" alt="Web Scraping Pipeline — structured data output from scraped websites" class="project-screenshot">
+      </div>
+
+      <div class="content-block">
+        <h2>The Problem</h2>
+        <p>A client needed to collect pricing, product, and contact data from multiple websites. Doing it manually meant visiting hundreds of pages, copying information, and pasting it into spreadsheets. It was slow, error-prone, and had to be repeated weekly.</p>
+
+        <h2>The Solution</h2>
+        <p>I built a Python scraper that:</p>
+        <ul>
+          <li><strong>Crawls target websites</strong> — follows pagination, handles dynamic content with Selenium/Playwright when needed</li>
+          <li><strong>Extracts structured data</strong> — prices, names, descriptions, contact info, anything in the page HTML or loaded via AJAX</li>
+          <li><strong>Handles anti-bot measures</strong> — rotating headers, delays, retries, and proxy support</li>
+          <li><strong>Cleans and deduplicates</strong> — normalizes data formats, removes duplicates, validates required fields</li>
+          <li><strong>Outputs clean files</strong> — CSV, JSON, or direct database insert, ready for analysis or import</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <div class="code-block">
+          <pre><span class="decorator">@dataclass</span>
+<span class="keyword">class</span> ScrapedProduct:
+    name: str
+    price: float
+    sku: str
+    url: str
+
+<span class="keyword">def</span> scrape_category(url: str) -> list[ScrapedProduct]:
+    <span class="string">"""
+    Scrape all product pages in a category.
+    Handles pagination, extracts data,
+    returns clean structured records.
+    """</span>
+    results = []
+    <span class="keyword">while</span> url:
+        page = fetch_with_retry(url)
+        items = extract_products(page)
+        results.extend(items)
+        url = get_next_page(page)
+    <span class="keyword">return</span> deduplicate(results)</pre>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Python 3.11</strong> — Core scraping language</li>
+          <li><strong>BeautifulSoup / lxml</strong> — HTML parsing</li>
+          <li><strong>Requests / httpx</strong> — HTTP client</li>
+          <li><strong>Playwright</strong> — JavaScript-rendered pages</li>
+          <li><strong>Pandas</strong> — Data cleaning and export</li>
+        </ul>
+
+        <h2>The Result</h2>
+        <p>What took the client 6-8 hours of manual copying is now done in under 5 minutes with a single command. The output is clean, deduplicated, and ready to import into any system. The scraper runs on a schedule and automatically updates the data.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">Check GitHub</a>
+          <a href="#" class="btn-secondary">Live Demo (Soon)</a>
+        </div>
+
+        <h2>Need Data Scraped?</h2>
+        <p>Whether it's product prices, business directories, real estate listings, or competitor data — I can build a scraper that gets it done. Let's discuss on Fiverr.</p>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin-top: 1rem;">
+          Hire Me on Fiverr
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.fiverr.com/sellers/monesh_matalni/edit" target="_blank" rel="noopener noreferrer">Fiverr</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
