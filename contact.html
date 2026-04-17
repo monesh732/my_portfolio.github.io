@@ -61,6 +61,54 @@
             <a href="https://www.fiverr.com/users/monesh_matalni" target="_blank" rel="noopener noreferrer">Open Fiverr Profile</a>
           </article>
         </div>
+        <div class="contact-form-panel reveal">
+          <div class="contact-form-copy">
+            <span class="section-label">Send a Message</span>
+            <h2 class="section-heading">Tell me what you need built</h2>
+            <p class="section-sub">Share your name, email, and a short brief. The form sends directly to my inbox and keeps you on the page after submission.</p>
+          </div>
+
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/moneshmatlani7@gmail.com" method="post">
+            <div class="form-field form-field-hidden" aria-hidden="true">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New portfolio inquiry">
+            <input type="hidden" name="_replyto" id="contactReplyTo" value="">
+
+            <div class="form-grid">
+              <label class="form-field" for="contactName">
+                <span>Name</span>
+                <input type="text" id="contactName" name="name" autocomplete="name" placeholder="Your full name" required minlength="2">
+              </label>
+
+              <label class="form-field" for="contactEmail">
+                <span>Email</span>
+                <input type="email" id="contactEmail" name="email" autocomplete="email" placeholder="you@example.com" required>
+              </label>
+            </div>
+
+            <label class="form-field" for="contactSubject">
+              <span>Subject</span>
+              <input type="text" id="contactSubject" name="subject" placeholder="Project inquiry, automation help, etc.">
+            </label>
+
+            <label class="form-field" for="contactMessage">
+              <span>Message</span>
+              <textarea id="contactMessage" name="message" rows="6" placeholder="Tell me about the problem, your timeline, and any links or details that matter." required minlength="10"></textarea>
+            </label>
+
+            <div class="form-meta">
+              <p class="form-hint">Please include scope, deadline, and budget if you have them.</p>
+              <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" class="hero-cta form-submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
