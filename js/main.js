@@ -92,42 +92,96 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => navObserver.observe(s));
   }
 
-  /* --- Mouse Parallax (hero scene) --- */
-  const parallaxLayers = document.querySelectorAll('[data-parallax-depth]');
+  /* --- Contact Form Drafting --- */
+  const contactForm = document.getElementById('contactForm');
+  const contactStatus = document.getElementById('contactStatus');
+
+  if (contactForm && contactStatus) {
+    const setStatus = (message, type = '') => {
+      contactStatus.classList.remove('is-error', 'is-success');
+      if (type) contactStatus.classList.add(type);
+      contactStatus.textContent = message;
+    };
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const companyField = contactForm.querySelector('#company');
+      if (companyField && companyField.value.trim()) {
+        return;
+      }
+
+      if (!contactForm.checkValidity()) {
+        setStatus('Please complete the required fields before sending.', 'is-error');
+        contactForm.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const subjectValue = String(formData.get('subject') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+      const payload = {
+        name,
+        email,
+        subject: subjectValue || `Portfolio inquiry from ${name}`,
+        message,
+        _captcha: 'false',
+        _template: 'table',
+        _subject: 'New portfolio inquiry',
+        _replyto: email
+      };
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton ? submitButton.textContent : '';
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+
+      setStatus('Sending your message...', '');
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(async (response) => {
+          let data = {};
+
+          try {
+            data = await response.json();
+          } catch {
+            data = {};
+          }
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Something went wrong while sending your message.');
+          }
+
+          contactForm.reset();
+          setStatus('Message sent successfully. I will reply by email soon.', 'is-success');
+        })
+        .catch(() => {
+          setStatus('Could not send the message right now. Please try again or email me directly.', 'is-error');
+        })
+        .finally(() => {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText || 'Send Message';
+          }
+        });
+    });
+  }
+
   const canUseHeavyMotion =
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
     !window.matchMedia('(pointer: coarse)').matches;
-
-  if (parallaxLayers.length > 0 && canUseHeavyMotion) {
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let parallaxRafId = null;
-
-    const animateParallax = () => {
-      // Lerp for smoother, less jittery motion
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-
-      parallaxLayers.forEach((layer) => {
-        const depth = Number(layer.getAttribute('data-parallax-depth')) || 0.2;
-        layer.style.transform = `translate3d(${currentX * 18 * depth}px, ${currentY * 18 * depth}px, 0)`;
-      });
-
-      parallaxRafId = window.requestAnimationFrame(animateParallax);
-    };
-
-    window.addEventListener('mousemove', (event) => {
-      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
-      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
-
-    animateParallax();
-    window.addEventListener('beforeunload', () => {
-      if (parallaxRafId) window.cancelAnimationFrame(parallaxRafId);
-    });
-  }
 
   /* --- Tilt Interactions for Cards --- */
   const tiltTargets = document.querySelectorAll(
