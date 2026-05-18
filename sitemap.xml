@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url><loc>https://monesh732.github.io/portfolio/</loc><lastmod>2026-05-18</lastmod><priority>1.0</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/about.html</loc><lastmod>2026-05-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/projects.html</loc><lastmod>2026-05-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/blog.html</loc><lastmod>2026-05-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/contact.html</loc><lastmod>2026-05-18</lastmod><priority>0.8</priority></url>
+
+  <url><loc>https://monesh732.github.io/portfolio/projects/grocery-store.html</loc><lastmod>2026-05-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/projects/hamster-game.html</loc><lastmod>2026-05-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/projects/file-organiser.html</loc><lastmod>2026-05-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/projects/fastapi-learning.html</loc><lastmod>2026-05-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://monesh732.github.io/portfolio/projects/ml-learning.html</loc><lastmod>2026-05-18</lastmod><priority>0.7</priority></url>
+
+</urlset>

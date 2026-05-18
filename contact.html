@@ -1,31 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Monesh Portfolio</title>
+  <title>Contact | Monesh Portfolio — Python Engineer</title>
+  <meta name="description" content="Contact Monesh for Python learning projects — Email, LinkedIn, or GitHub.">
+  <meta property="og:title" content="Monesh — Contact">
+  <meta property="og:description" content="Reach out to connect with Monesh — Email, LinkedIn, or GitHub.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monesh732.github.io/portfolio/contact.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
   <nav class="nav">
     <div class="container">
-      <a href="index.html" class="nav-logo">monesh<span>.</span></a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="https://www.fiverr.com/users/monesh_matalni" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire Me on Fiverr</a>
-      </div>
+        <a href="index.html" class="nav-logo">monesh<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html" class="active">Contact</a>
+        </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <main>
+  <main id="main">
     <section class="page-hero reveal">
       <div class="container">
         <span class="page-orb left" aria-hidden="true"></span>
@@ -33,8 +38,8 @@
         <span class="page-float-chip one" aria-hidden="true">Open to Work</span>
         <span class="page-float-chip two" aria-hidden="true">Quick Replies</span>
         <span class="section-label">Contact</span>
-        <h1 class="section-heading">Let’s Build Something Useful</h1>
-        <p class="section-sub" style="margin: 0 auto;">Reach out by your preferred channel. I usually reply quickly with scope and next steps.</p>
+        <h1 class="section-heading">Let's Connect</h1>
+        <p class="section-sub" style="margin: 0 auto;">Interested in Python learning projects or want to exchange ideas — reach out on any platform below.</p>
       </div>
     </section>
     <section class="section" style="padding-top: 0;">
@@ -42,7 +47,7 @@
         <div class="contact-cards reveal-stagger">
           <article class="contact-card">
             <h3>Email</h3>
-            <p>Best for project details and requirements.</p>
+            <p>Best project and learning discussions.</p>
             <a href="mailto:moneshmatlani7@gmail.com">moneshmatlani7@gmail.com</a>
           </article>
           <article class="contact-card">
@@ -52,20 +57,15 @@
           </article>
           <article class="contact-card">
             <h3>GitHub</h3>
-            <p>Check repositories and technical work.</p>
+            <p>GitHub repositories and project source code.</p>
             <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">github.com/monesh732</a>
-          </article>
-          <article class="contact-card">
-            <h3>Fiverr</h3>
-            <p>Start directly with a service order.</p>
-            <a href="https://www.fiverr.com/users/monesh_matalni" target="_blank" rel="noopener noreferrer">Open Fiverr Profile</a>
           </article>
         </div>
         <div class="contact-form-panel reveal">
           <div class="contact-form-copy">
             <span class="section-label">Send a Message</span>
-            <h2 class="section-heading">Tell me what you need built</h2>
-            <p class="section-sub">Share your name, email, and a short brief. The form sends directly to my inbox and keeps you on the page after submission.</p>
+            <h2 class="section-heading">Share feedback or reach out</h2>
+            <p class="section-sub">Send a message related to a project, collaboration, or learning. The form goes directly to my inbox.</p>
           </div>
 
           <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/moneshmatlani7@gmail.com" method="post">
@@ -93,16 +93,16 @@
 
             <label class="form-field" for="contactSubject">
               <span>Subject</span>
-              <input type="text" id="contactSubject" name="subject" placeholder="Project inquiry, automation help, etc.">
+              <input type="text" id="contactSubject" name="subject" placeholder="Project feedback, learning collaboration, etc.">
             </label>
 
             <label class="form-field" for="contactMessage">
               <span>Message</span>
-              <textarea id="contactMessage" name="message" rows="6" placeholder="Tell me about the problem, your timeline, and any links or details that matter." required minlength="10"></textarea>
+              <textarea id="contactMessage" name="message" rows="6" placeholder="Share what the project is about, any feedback, or ideas for collaboration." required minlength="10"></textarea>
             </label>
 
             <div class="form-meta">
-              <p class="form-hint">Please include scope, deadline, and budget if you have them.</p>
+              <p class="form-hint">Share enough context so I know which project or topic this is about.</p>
               <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
             </div>
 
@@ -120,10 +120,12 @@
         <a href="mailto:moneshmatlani7@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.fiverr.com/users/monesh_matalni" target="_blank" rel="noopener noreferrer">Fiverr</a>
       </div>
     </div>
   </footer>
   <script src="js/main.js" defer></script>
+
+  <!-- ===== Portfolio AI Chatbot ===== -->
 </body>
 </html>
+

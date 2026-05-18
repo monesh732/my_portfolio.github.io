@@ -1,0 +1,9 @@
+# robots.txt — Portfolio of Monesh
+# Live site: https://monesh732.github.io/portfolio
+
+User-agent: *
+Allow: /
+Disallow: /chatbot/
+
+# Help search engines discover the sitemap
+Sitemap: https://monesh732.github.io/portfolio/sitemap.xml
