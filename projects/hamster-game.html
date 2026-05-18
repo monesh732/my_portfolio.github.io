@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamster Game | Monesh Portfolio</title>
+  <meta name="description" content="Self-learning project: an arcade-style Python game built with Pygame — game loops, sprite management, collision detection, scoring, and level progression.">
+  <meta property="og:title" content="Monesh — Hamster Game (Learning Project)">
+  <meta property="og:description" content="Arcade-style Python game built to learn game loops, sprite management, collision detection, scoring, and level progression with Pygame.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monesh732.github.io/portfolio/projects/hamster-game.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <nav class="nav">
+    <div class="container">
+        <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../about.html">About</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <article class="project-hero reveal">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Projects
+        </a>
+        <span class="section-label">Project</span>
+        <h1 class="section-heading">Hamster Game</h1>
+        <p class="section-sub" style="margin: 0 auto;">An arcade-style Python game built to learn game loops, sprite management, collision detection, scoring, and level progression — interactive programming fundamentals with Pygame.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">Pygame</p><p class="label">2D game framework</p></div>
+        <div class="result-box"><p class="number">3+</p><p class="label">Levels with increasing difficulty</p></div>
+        <div class="result-box"><p class="number">Sprite</p><p class="label">Object management &amp; collision</p></div>
+      </div>
+
+      <div class="project-screenshot-container">
+        <picture><source srcset="../web_scraping.png.webp" type="image/webp"><img src="../web_scraping.png" alt="Hamster Game — Pygame arcade gameplay with scoring display and obstacles" class="project-screenshot"></picture>
+      </div>
+
+      <div class="content-block">
+        <h2>Project Background</h2>
+        <p>I built this game to understand how interactive software actually works — not following a step-by-step tutorial, but designing the game loop, mechanics, and state from scratch. Game programming forces you to care about frame timing, object lifecycle, and edge cases in a way no web page or script does.</p>
+
+        <h2>What Was Built</h2>
+        <p>A fully playable arcade-style game built from the ground up:</p>
+        <ul>
+          <li><strong>Game loop</strong> — fixed timestep update cycle keeping gameplay speed consistent across frame rates</li>
+          <li><strong>Sprite system</strong> — custom sprite classes with update/draw lifecycles for the player, obstacles, and collectables</li>
+          <li><strong>Collision detection</strong> — pixel-level hit testing between the player and obstacles, triggering game states</li>
+          <li><strong>Scoring system</strong> — points awarded per level completion with persistent high-score tracking</li>
+          <li><strong>Level progression</strong> — increasing speed and obstacle density across 3+ levels with end-screen transitions</li>
+          <li><strong>Sound &amp; texture</strong> — audio cues for events and sprite-based rendering</li>
+        </ul>
+
+        <h2>Core Game Loop</h2>
+        <div class="code-block">
+          <pre><span class="keyword">def</span> game_loop():
+    clock = pygame.time.Clock()
+    state = GameState.RUNNING
+
+    <span class="keyword">while</span> state != GameState.QUIT:
+        dt = clock.tick(60) / <span class="number">1000.0</span>   <span class="comment"># 60 FPS, seconds</span>
+
+        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():
+            <span class="keyword">if</span> event.type == pygame.QUIT:
+                state = GameState.QUIT
+
+        update(dt)      <span class="comment"># physics, positions, collisions</span>
+        draw(screen)    <span class="comment"># render everything</span>
+        pygame.display.flip()  <span class="comment"># swap buffers</span></pre>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Python 3</strong> — Application logic</li>
+          <li><strong>Pygame</strong> — 2D game engine and rendering</li>
+          <li><strong>pygame.mixer</strong> — Sound effects and background music</li>
+          <li><strong>JSON</strong> — High-score persistence across sessions</li>
+        </ul>
+
+        <h2>What I Learned</h2>
+        <p>The biggest takeaway was how a seemingly simple task — move a character across the screen — forces you to think about frame independence, collision envelopes, and state transitions. Building three distinct levels with escalating difficulty also taught me how to structure game data so adding a new level is just a config change, not a new class.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Source on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>

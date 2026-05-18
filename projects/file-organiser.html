@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Organisation Automation | Monesh Portfolio</title>
+  <meta name="description" content="Self-learning project: a Python script that watches the Downloads folder and automatically sorts every incoming file into categorised sub-folders — OS-level automation.">
+  <meta property="og:title" content="Monesh — File Organisation Automation (Learning Project)">
+  <meta property="og:description" content="Python OS automation: watches the Downloads folder and sorts every new file — images, PDFs, installers, archives — into their own folders automatically.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monesh732.github.io/portfolio/projects/file-organiser.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <nav class="nav">
+    <div class="container">
+        <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../about.html">About</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <article class="project-hero reveal">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Projects
+        </a>
+        <span class="section-label">Project</span>
+        <h1 class="section-heading">File Organisation Automation</h1>
+        <p class="section-sub" style="margin: 0 auto;">A Python OS-automation script — watches the Downloads folder (or any folder) and automatically sorts every incoming file into categorised sub-folders based on its file type.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">12+</p><p class="label">File categories handled</p></div>
+        <div class="result-box"><p class="number">Zero</p><p class="label">Manual sorting required</p></div>
+        <div class="result-box"><p class="number">OS level</p><p class="label">Moves files faster than any GUI tool</p></div>
+      </div>
+
+      <div class="content-block">
+        <h2>Project Background</h2>
+        <p>The Downloads folder is a universal dumping ground — PDFs, installers, screenshots, archives, all mixed together. Every time I found myself dragging files into folders by hand, I thought: this is exactly the kind of repetitive task a script should handle. So I built one.</p>
+
+        <h2>What Was Built</h2>
+        <p>A Python script that runs silently in the background, monitors a folder, and keeps it clean without any manual work:</p>
+        <ul>
+          <li><strong>File watcher</strong> — polls or watches folders for new files, triggering sort logic as soon as a file lands</li>
+          <li><strong>Extension mapping</strong> — maps every file extension to a category folder (images, PDFs, installers, archives, videos, audio, documents, code files)</li>
+          <li><strong>Safe move</strong> — skips hidden/system files, silently ignores files still in use, and moves only confirmed targets</li>
+          <li><strong>Folder creation</strong> — creates category folders on first run if they don't exist</li>
+          <li><strong>Dry-run &amp; logging</strong> — preview what would move before touching a single file; logs every action for auditability</li>
+        </ul>
+
+        <h2>Core Sort Logic</h2>
+        <div class="code-block">
+          <pre>CATEGORY_MAP = {
+    <span class="string">"Images"</span>: [<span class="string">".jpg"</span>, <span class="string">".png"</span>, <span class="string">".gif"</span>, <span class="string">".webp"</span>, <span class="string">".svg"</span>],
+    <span class="string">"PDFs"</span>:    [<span class="string">".pdf"</span>],
+    <span class="string">"Installers"</span>: [<span class="string">".exe"</span>, <span class="string">".msi"</span>, <span class="string">".dmg"</span>],
+    <span class="string">"Archives"</span>: [<span class="string">".zip"</span>, <span class="string">".rar"</span>, <span class="string">".tar.gz"</span>],
+}
+
+RESERVED_NAMES = {<span class="string">"desktop.ini"</span>, <span class="string">"Thumbs.db"</span>}
+
+<span class="keyword">def</span> sort_file(path: Path, target_dir: Path) -> str | <span class="keyword">None</span>:
+    <span class="keyword">if</span> path.name <span class="keyword">in</span> RESERVED_NAMES:
+        <span class="keyword">return None</span>
+    category = next((c <span class="keyword">for</span> c, exts <span class="keyword">in</span> CATEGORY_MAP.items()
+                     <span class="keyword">if</span> path.suffix.lower() <span class="keyword">in</span> exts), <span class="keyword">None</span>)
+    <span class="keyword">if</span> <span class="keyword">not</span> category:
+        <span class="keyword">return None</span>
+    dest = target_dir / category / path.name
+    shutil.move(str(path), str(dest))
+    <span class="keyword">return</span> category</pre>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Python 3</strong> — Core scripting language</li>
+          <li><strong>pathlib / shutil</strong> — Cross-platform file operations</li>
+          <li><strong>watchdog</strong> — Event-based folder monitoring</li>
+          <li><strong>logging</strong> — Structured logs for every action taken</li>
+        </ul>
+
+        <h2>What I Learned</h2>
+        <p>This project may be the simplest in the portfolio on paper, but it consolidated two key ideas: naming conventions as a public API, and error handling as user experience. Getting the file extension mapping right taught me to design for edge cases (Unicode filenames, locked files, files with no extension). Adding safe-move semantics and logging turned a 50-line script into something that could run unattended for months.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Source on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>

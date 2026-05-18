@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI / ML Foundation | Monesh Portfolio</title>
+  <meta name="description" content="Learning milestone: AI/ML foundations in Python — NumPy for numerical arrays, Matplotlib for data visualisation, with Pandas and core ML algorithms next on the roadmap.">
+  <meta property="og:title" content="Monesh — AI / ML Foundation (Learning Milestone)">
+  <meta property="og:description" content="AI/ML learning journey in progress: NumPy and Matplotlib complete, building numerical confidence. Roadmap: Pandas for data trouble-shooting, then ML algorithms from scratch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monesh732.github.io/portfolio/projects/ml-learning.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <nav class="nav">
+    <div class="container">
+        <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../about.html">About</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <article class="project-hero reveal">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Projects
+        </a>
+        <span class="section-label">Learning Milestone</span>
+        <h1 class="section-heading">AI / ML Foundation</h1>
+        <p class="section-sub" style="margin: 0 auto;">The next chapter in the learning journey — NumPy and Matplotlib done, building numerical confidence. Roadmap: Pandas for data manipulation, then core ML algorithm implementation from scratch.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">NumPy</p><p class="label">Numerical arrays &amp; vectorised ops</p></div>
+        <div class="result-box"><p class="number">Matplotlib</p><p class="label">Data visualisation &amp; plotting</p></div>
+        <div class="result-box"><p class="label">In Progress</p><p class="number">Pandas &rarr; ML</p></div>
+      </div>
+
+      <div class="content-block">
+        <h2>Why AI/ML</h2>
+        <p>Data science sits at the intersection of everything I have been building — Python programming, data handling, and analytical thinking. Before touching Pandas or any ML algorithm, the foundations had to be solid. NumPy and Matplotlib are those foundations.</p>
+
+        <h2>What Has Been Learned</h2>
+        <p>Milestones completed so far in this learning chapter:</p>
+        <ul>
+          <li><strong>NumPy</strong> — array creation, broadcasting, reshaping, slicing, and vectorised operations over Python loops</li>
+          <li><strong>Linear algebra basics</strong> — matrix multiplication, dot products, eigendecomposition hands-on practice</li>
+          <li><strong>Matplotlib</strong> — line, scatter, bar, and heatmap plots; subplot layouts; custom labels and styling</li>
+          <li><strong>Statistical thinking</strong> — mean/median/mode, variance, standard deviation, correlation from scratch with NumPy</li>
+        </ul>
+
+        <h2>NumPy Array Work Example</h2>
+        <div class="code-block">
+          <pre><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># Feature matrix – rows are samples, columns are features</span>
+X = np.array([
+    [<span class="number">1.0</span>, <span class="number">2.3</span>, <span class="number">0.7</span>],
+    [<span class="number">3.1</span>, <span class="number">1.8</span>, <span class="number">4.5</span>],
+    [<span class="number">0.5</span>, <span class="number">2.9</span>, <span class="number">1.1</span>],
+])
+
+<span class="comment"># Mean-centre each feature column (vectorised – no Python loops)</span>
+X_centered = X - X.mean(axis=<span class="number">0</span>)
+
+<span class="comment"># Correlation matrix in one pass</span>
+corr = np.corrcoef(X_centered.T)
+
+<span class="comment"># Visualise as a heatmap</span>
+plt.imshow(corr, cmap=<span class="string">"coolwarm"</span>, vmin=-<span class="number">1</span>, vmax=<span class="number">1</span>)
+plt.colorbar(label=<span class="string">"Correlation"</span>)
+plt.title(<span class="string">"Feature Correlation Matrix"</span>)
+plt.show()</pre>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Python 3</strong> — Core language</li>
+          <li><strong>NumPy</strong> — Numerical computing and array operations</li>
+          <li><strong>Matplotlib</strong> — Data visualisation and publication-quality plots</li>
+          <li><strong>Pandas</strong> — *(next milestone — data frames and cleaning)*</li>
+          <li><strong>scikit-learn</strong> — *(upcoming — ML algorithms and pipelines)*</li>
+        </ul>
+
+        <h2>What Comes Next</h2>
+        <p>Numerical fluency with NumPy opens the door to Pandas — labelled DataFrames, handling real-world messy datasets, group-by aggregations, and time-series indexing. From there, the ML fundamentals begin: linear regression from scratch, gradient descent, and the bias-variance trade-off — all in Python without a library until the concept is internalised.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Source on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>

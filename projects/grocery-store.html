@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Store Management System | Monesh Portfolio</title>
+  <meta name="description" content="Self-learning project: a full-stack Java Grocery Store Management System built with Swing GUI, Java backend, and MySQL via XAMPP — inventory, billing, and customer records.">
+  <meta property="og:title" content="Monesh — Grocery Store Management System (Learning Project)">
+  <meta property="og:description" content="Java full-stack learning project — Swing GUI, inventory management, billing workflow, and MySQL database with NetBeans and XAMPP.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monesh732.github.io/portfolio/projects/grocery-store.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <nav class="nav">
+    <div class="container">
+        <a href="../index.html" class="nav-logo">monesh<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../about.html">About</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <article class="project-hero reveal">
+      <div class="container">
+        <a href="../projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Back to Projects
+        </a>
+        <span class="section-label">Project</span>
+        <h1 class="section-heading">Grocery Store Management System</h1>
+        <p class="section-sub" style="margin: 0 auto;">A hands-on Java learning project — Swing GUI, inventory management, billing workflow, and customer records backed by a MySQL database via XAMPP.</p>
+      </div>
+    </article>
+
+    <div class="container">
+      <div class="results-grid reveal-stagger">
+        <div class="result-box"><p class="number">4</p><p class="label">Modules (inventory, billing, customers, staff)</p></div>
+        <div class="result-box"><p class="number">MySQL</p><p class="label">Persistent data layer via XAMPP</p></div>
+        <div class="result-box"><p class="number">Swing</p><p class="label">Desktop GUI with real-time tables</p></div>
+      </div>
+
+      <div class="project-screenshot-container">
+        <picture><source srcset="../backend.png.webp" type="image/webp"><img src="../backend.png" alt="Grocery Store Management System — Swing dashboard with inventory table, billing screen, and MySQL records" class="project-screenshot"></picture>
+      </div>
+
+      <div class="content-block">
+        <h2>Project Background</h2>
+        <p>Before diving into Python, I built this system in Java to understand how desktop applications and relational databases connect end-to-end. The goal was to build something a real small business could use — not just a study exercise.</p>
+
+        <h2>What Was Built</h2>
+        <p>A full-stack Java desktop application covering every core part of running a grocery store:</p>
+        <ul>
+          <li><strong>Swing GUI</strong> — full-featured desktop interface with tabbed screens and live-updating JTable panels</li>
+          <li><strong>Inventory module</strong> — add, update, search, and delete products with category, price, and stock tracking</li>
+          <li><strong>Billing module</strong> — cart-style invoice builder with item totals, tax, and receipt generation</li>
+          <li><strong>Customer records</strong> — customer debt/credit tracking and purchase history</li>
+          <li><strong>MySQL via XAMPP</strong> — structured schema with foreign-key relationships across all modules</li>
+          <li><strong>JDBC data layer</strong> — PreparedStatement queries for every CRUD path</li>
+        </ul>
+
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Java</strong> — Core application logic</li>
+          <li><strong>Java Swing</strong> — Desktop GUI framework</li>
+          <li><strong>MySQL</strong> — Relational database</li>
+          <li><strong>XAMPP</strong> — Local PHP + MySQL stack for database management</li>
+          <li><strong>JDBC</strong> — Database connectivity layer</li>
+          <li><strong>NetBeans IDE</strong> — Development environment</li>
+        </ul>
+
+        <h2>What I Learned</h2>
+        <p>This was the project that introduced me to relational database design, CRUD operations, and GUI programming. Working through JDBC queries, schema design, and the Swing event model gave me a grounded understanding of how data moves between the UI layer and the database — a foundation I still rely on when building Python APIs today.</p>
+
+        <div class="project-actions">
+          <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Source on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Monesh.</p>
+      <div class="social-links">
+        <a href="mailto:moneshmatlani7@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/monesh-matlani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/monesh732" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>
